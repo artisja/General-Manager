@@ -42,6 +42,9 @@
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.010515225485788555" green="0.016398866520792057" blue="0.020887305699481828" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="startPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KfR-AW-noz"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to General Manager pick a dificulty, input a team name to start!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ba-Ft-aWP">
                                 <rect key="frame" x="16" y="67" width="343" height="125"/>
@@ -54,20 +57,37 @@
                                 <rect key="frame" x="66" y="299" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Easy"/>
+                                <connections>
+                                    <action selector="easySelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PIg-nA-BZO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dg-2B-v2H">
                                 <rect key="frame" x="168" y="299" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Medium"/>
+                                <connections>
+                                    <action selector="mediumSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qis-4i-OTd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCk-uP-zXL">
                                 <rect key="frame" x="270" y="299" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Hard"/>
+                                <connections>
+                                    <action selector="hardSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4sm-W0-XoX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.50342660930411032" green="0.7851116250574568" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="easyButton" destination="sbW-aZ-VG7" id="Dag-mX-WHo"/>
+                        <outlet property="hardButton" destination="ZCk-uP-zXL" id="BFw-7n-TZQ"/>
+                        <outlet property="mediumButton" destination="5dg-2B-v2H" id="8jz-Ij-nUX"/>
+                        <outlet property="startButton" destination="QM9-Kr-CEE" id="ubw-9y-Tvo"/>
+                        <outlet property="teamNameField" destination="sSV-Pr-ATZ" id="Sya-i0-SRz"/>
+                        <segue destination="Uc5-OM-yRL" kind="show" identifier="TeamTVC" id="5Rg-5g-kgs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

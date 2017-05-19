@@ -11,6 +11,8 @@ import UIKit
 class TeamTableViewController: UITableViewController {
     
     var teamSheet = [Player]()
+    var budget = 0.0
+    var teamName = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
