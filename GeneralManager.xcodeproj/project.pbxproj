@@ -16,6 +16,7 @@
 		5978953C1ECEAFCA00397A2A /* GeneralManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5978953B1ECEAFCA00397A2A /* GeneralManagerUITests.swift */; };
 		5978954C1ECEB4AD00397A2A /* TeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5978954B1ECEB4AD00397A2A /* TeamTableViewController.swift */; };
 		5978954E1ECEB51200397A2A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5978954D1ECEB51200397A2A /* Player.swift */; };
+		598E3B0A1ECFC61600D35C3D /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598E3B091ECFC61600D35C3D /* PlayerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		5978953D1ECEAFCA00397A2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5978954B1ECEB4AD00397A2A /* TeamTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamTableViewController.swift; path = ../TeamTableViewController.swift; sourceTree = "<group>"; };
 		5978954D1ECEB51200397A2A /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		598E3B091ECFC61600D35C3D /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				597895241ECEAFCA00397A2A /* LaunchScreen.storyboard */,
 				597895271ECEAFCA00397A2A /* Info.plist */,
 				5978954D1ECEB51200397A2A /* Player.swift */,
+				598E3B091ECFC61600D35C3D /* PlayerCell.swift */,
 			);
 			path = GeneralManager;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				5978951E1ECEAFCA00397A2A /* ViewController.swift in Sources */,
 				5978951C1ECEAFCA00397A2A /* AppDelegate.swift in Sources */,
 				5978954C1ECEB4AD00397A2A /* TeamTableViewController.swift in Sources */,
+				598E3B0A1ECFC61600D35C3D /* PlayerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +519,7 @@
 				597895421ECEAFCA00397A2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		597895431ECEAFCA00397A2A /* Build configuration list for PBXNativeTarget "GeneralManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +528,7 @@
 				597895451ECEAFCA00397A2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		597895461ECEAFCA00397A2A /* Build configuration list for PBXNativeTarget "GeneralManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +537,7 @@
 				597895481ECEAFCA00397A2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

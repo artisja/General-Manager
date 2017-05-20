@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeamTableViewController: UITableViewController {
+class TeamTableViewController: UITableViewController{
     
     var teamSheet = [Player]()
     var budget = 0.0
@@ -16,12 +16,29 @@ class TeamTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var MarcoReus = Player(pName: "Marco Reus", pCost: 50.6, pAge: 27, pNation: "Germany")
+        var LeroySane = Player(pName: "Leroy Sane", pCost: 37.8, pAge: 21, pNation: "Germany")
+        var MarcusRashford = Player(pName: "Marcus Rashford", pCost: 10.0, pAge: 19, pNation: "England")
+        var JohnnyEvans = Player(pName: "Jonny Evans", pCost: 5.10, pAge: 29, pNation: "England")
+        var KeisukeHonda = Player(pName: "Keisuke Honda", pCost: 3.5, pAge: 30, pNation: "Japan")
+        var Isco = Player(pName: "Isco", pCost: 35.0, pAge: 25, pNation: "Spain")
+        var PaulPogba = Player(pName: "Paul Pogba", pCost: 105.0, pAge: 24, pNation: "France")
+        
+        teamSheet.append(MarcoReus)
+        teamSheet.append(MarcusRashford)
+        teamSheet.append(PaulPogba)
+        teamSheet.append(KeisukeHonda)
+        teamSheet.append(LeroySane)
+        teamSheet.append(JohnnyEvans)
+        teamSheet.append(Isco)
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,9 +48,14 @@ class TeamTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return teamName
+    }
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,7 +65,13 @@ class TeamTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
+        cell.nameLabel.text = teamSheet[indexPath.row].getName()
+        cell.transferLabel.text = "Value: \(teamSheet[indexPath.row].getCost())"
+        cell.ageLabel.text = "Age: \(teamSheet[indexPath.row].getAge())"
+        cell.nationalityLabel.text = "Nation: " + teamSheet[indexPath.row].getNationality()
+        cell.imageView?.backgroundColor = UIColor.blue
+    
 
         // Configure the cell...
 
