@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class TeamTableViewController: UITableViewController{
     
@@ -16,6 +17,17 @@ class TeamTableViewController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        var ref : DatabaseReference!
+        
+        ref = Database.database().reference()
+        
+       tableView.isScrollEnabled = true
+        
+        
+        
+        
         var MarcoReus = Player(pName: "Marco Reus", pCost: 50.6, pAge: 27, pNation: "Germany")
         var LeroySane = Player(pName: "Leroy Sane", pCost: 37.8, pAge: 21, pNation: "Germany")
         var MarcusRashford = Player(pName: "Marcus Rashford", pCost: 10.0, pAge: 19, pNation: "England")
@@ -23,7 +35,8 @@ class TeamTableViewController: UITableViewController{
         var KeisukeHonda = Player(pName: "Keisuke Honda", pCost: 3.5, pAge: 30, pNation: "Japan")
         var Isco = Player(pName: "Isco", pCost: 35.0, pAge: 25, pNation: "Spain")
         var PaulPogba = Player(pName: "Paul Pogba", pCost: 105.0, pAge: 24, pNation: "France")
-        
+        var AlessandroFlorenzi = Player(pName: "Alessandro Florenzi", pCost: 17.0, pAge: 26, pNation: "Italy")
+        var ThomasLemar = Player(pName: "Thomas Lemar", pCost: 20.0, pAge: 21, pNation: "France")
         teamSheet.append(MarcoReus)
         teamSheet.append(MarcusRashford)
         teamSheet.append(PaulPogba)
@@ -31,14 +44,20 @@ class TeamTableViewController: UITableViewController{
         teamSheet.append(LeroySane)
         teamSheet.append(JohnnyEvans)
         teamSheet.append(Isco)
-        
-        
-        
+        teamSheet.append(AlessandroFlorenzi)
+        teamSheet.append(ThomasLemar)
+
+        for player in teamSheet  {
+            var dict : [String: Any] = ["Cost" : player.getCost(),"Age": player.getAge(),"Nation": player.getNationality()]
+
+         ref.child(player.getName()).setValue(dict)
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.title = teamName
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,11 +66,6 @@ class TeamTableViewController: UITableViewController{
     }
 
     // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return teamName
-    }
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -62,6 +76,8 @@ class TeamTableViewController: UITableViewController{
         // #warning Incomplete implementation, return the number of rows
         return teamSheet.count
     }
+    
+    
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,7 +86,6 @@ class TeamTableViewController: UITableViewController{
         cell.transferLabel.text = "Value: \(teamSheet[indexPath.row].getCost())"
         cell.ageLabel.text = "Age: \(teamSheet[indexPath.row].getAge())"
         cell.nationalityLabel.text = "Nation: " + teamSheet[indexPath.row].getNationality()
-        cell.imageView?.backgroundColor = UIColor.blue
     
 
         // Configure the cell...
