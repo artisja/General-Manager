@@ -13,11 +13,18 @@ class TeamTableViewController: UITableViewController{
     
     var teamSheet = [Player]()
     var budget = 0.0
+    var currentBudget = 0.0
+    var totalPlayers = 0
     var teamName = ""
+    var avgAge = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var tableview: UITableView
+        tableView = self.tableView
+        tableView.delegate = self
+        tableView.dataSource = self
         
         var ref : DatabaseReference!
         
@@ -52,6 +59,15 @@ class TeamTableViewController: UITableViewController{
 
          ref.child(player.getName()).setValue(dict)
         }
+        
+        
+        for player in teamSheet {
+            currentBudget = player.cost + currentBudget
+            avgAge = player.age + avgAge
+        }
+        var teamCount = teamSheet.count 
+        avgAge = Double(round(10*(avgAge / Double(teamCount)))/10)
+        totalPlayers = teamSheet.count
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -81,16 +97,23 @@ class TeamTableViewController: UITableViewController{
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
-        cell.nameLabel.text = teamSheet[indexPath.row].getName()
+    
+        if indexPath.row == 0{
+           let cell2 = tableView.dequeueReusableCell(withIdentifier: "BudgetCell", for: indexPath) as! BudgetCell
+            cell2.budgetLabel.text = "Allowed Budget: \(budget) "
+            cell2.ageLabel.text = "Avg. Age: \(avgAge)"
+            cell2.playersLabel.text = "# of Players: \(totalPlayers)"
+            cell2.currentBudgetLabel.text = "Current Budget: \(currentBudget) "
+            return cell2
+
+        }else{
+       let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
+        cell.nameLabel.text = teamSheet[indexPath.row-1].getName()
         cell.transferLabel.text = "Value: \(teamSheet[indexPath.row].getCost())"
         cell.ageLabel.text = "Age: \(teamSheet[indexPath.row].getAge())"
         cell.nationalityLabel.text = "Nation: " + teamSheet[indexPath.row].getNationality()
-    
-
-        // Configure the cell...
-
         return cell
+        }
     }
  
 
@@ -101,7 +124,7 @@ class TeamTableViewController: UITableViewController{
         return true
     }
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -111,7 +134,6 @@ class TeamTableViewController: UITableViewController{
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.

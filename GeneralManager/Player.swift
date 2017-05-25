@@ -12,10 +12,10 @@ class Player {
     
     var name : String
     var cost : Double
-    var age  : Int
+    var age  : Double
     var nationality : String
     
-    init(pName : String,pCost : Double,pAge : Int,pNation : String) {
+    init(pName : String,pCost : Double,pAge : Double,pNation : String) {
         self.name = pName
         self.cost = pCost
         self.age = pAge
@@ -30,7 +30,7 @@ class Player {
         return self.cost
     }
     
-    func getAge() -> Int {
+    func getAge() -> Double {
         return self.age
     }
     
